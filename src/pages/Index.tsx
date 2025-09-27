@@ -5,12 +5,14 @@ import { TaskCard } from "@/components/TaskCard";
 import { TaskForm } from "@/components/TaskForm";
 import { TaskFilters } from "@/components/TaskFilters";
 import { useTasks } from "@/hooks/useTasks";
+import { useAuth } from "@/hooks/useAuth";
 import { toast } from "@/hooks/use-toast";
 import { Task, TaskStatus, TaskPriority } from "@/types/task";
-import { Plus, CheckCircle, Clock, AlertCircle } from "lucide-react";
+import { Plus, CheckCircle, Clock, AlertCircle, LogOut } from "lucide-react";
 
 const Index = () => {
-  const { tasks, addTask, updateTask, deleteTask, updateTaskStatus } = useTasks();
+  const { tasks, loading, addTask, updateTask, deleteTask, updateTaskStatus } = useTasks();
+  const { user, signOut } = useAuth();
   const [showForm, setShowForm] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -39,18 +41,20 @@ const Index = () => {
     };
   }, [tasks]);
 
-  const handleCreateTask = (taskData: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => {
-    addTask(taskData);
-    setShowForm(false);
-    toast({
-      title: "Task created",
-      description: "Your new task has been added successfully.",
-    });
+  const handleCreateTask = async (taskData: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => {
+    const newTask = await addTask(taskData);
+    if (newTask) {
+      setShowForm(false);
+      toast({
+        title: "Task created",
+        description: "Your new task has been added successfully.",
+      });
+    }
   };
 
-  const handleUpdateTask = (taskData: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => {
+  const handleUpdateTask = async (taskData: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => {
     if (editingTask) {
-      updateTask(editingTask.id, taskData);
+      await updateTask(editingTask.id, taskData);
       setEditingTask(null);
       toast({
         title: "Task updated",
@@ -59,8 +63,8 @@ const Index = () => {
     }
   };
 
-  const handleDeleteTask = (id: string) => {
-    deleteTask(id);
+  const handleDeleteTask = async (id: string) => {
+    await deleteTask(id);
     toast({
       title: "Task deleted",
       description: "The task has been removed.",
@@ -68,8 +72,8 @@ const Index = () => {
     });
   };
 
-  const handleStatusChange = (id: string, status: Task['status']) => {
-    updateTaskStatus(id, status);
+  const handleStatusChange = async (id: string, status: Task['status']) => {
+    await updateTaskStatus(id, status);
     toast({
       title: "Status updated",
       description: `Task marked as ${status.replace('-', ' ')}.`,
@@ -85,6 +89,25 @@ const Index = () => {
     setShowForm(false);
     setEditingTask(null);
   };
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast({
+      title: "Signed out",
+      description: "You have been successfully signed out.",
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-2 text-muted-foreground">Loading tasks...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (showForm) {
     return (
@@ -108,13 +131,19 @@ const Index = () => {
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Task Management</h1>
             <p className="text-muted-foreground">
-              Organize and track your tasks efficiently
+              Welcome back, {user?.email}
             </p>
           </div>
-          <Button onClick={() => setShowForm(true)} className="gap-2">
-            <Plus className="h-4 w-4" />
-            New Task
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={handleSignOut} className="gap-2">
+              <LogOut className="h-4 w-4" />
+              Sign Out
+            </Button>
+            <Button onClick={() => setShowForm(true)} className="gap-2">
+              <Plus className="h-4 w-4" />
+              New Task
+            </Button>
+          </div>
         </div>
 
         {/* Statistics */}
