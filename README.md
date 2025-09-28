@@ -1,35 +1,35 @@
 # Welcome to the Task Management System project
-
+<br><br>
  All Technologies Used in This Project:
 
-1.	Frontend Technologies:
+1.	Frontend Technologies:<br>
 •	React 18.3.1 (JavaScript Library) <br>
-•	TypeScript (Type-safe JavaScript)
-•	Vite (Build Tool)
-•	Tailwind CSS (Styling Framework)
-•	shadcn/ui (UI Component Library)
-
-2.	Backend & Database:
-•	Supabase (Backend-as-a-Service)
-•	PostgreSQL (Database)
-•	Row Level Security (RLS)
-
-3.	Authentication:
-•	Supabase Auth
-•	Email/Password Authentication
-
-4.	State Management & Routing:
-•	React Router DOM (Navigation)
-•	TanStack React Query (Data Fetching)
-•	React Hooks (State Management)
-
-5.	Form Handling & Validation:
-•	React Hook Form
-•	Zod (Schema Validation)
-
-6.	Icons & UI:
-•	Lucide React (Icon Library)
-•	Radix UI (Headless Components)
+•	TypeScript (Type-safe JavaScript)<br>
+•	Vite (Build Tool)<br>
+•	Tailwind CSS (Styling Framework)<br>
+•	shadcn/ui (UI Component Library)<br>
+<br>
+2.	Backend & Database:<br>
+•	Supabase (Backend-as-a-Service)<br>
+•	PostgreSQL (Database)<br>
+•	Row Level Security (RLS)<br>
+<br>
+3.	Authentication:<br>
+•	Supabase Auth<br>
+•	Email/Password Authentication<br>
+<br>
+4.	State Management & Routing:<br>
+•	React Router DOM (Navigation)<br>
+•	TanStack React Query (Data Fetching)<br>
+•	React Hooks (State Management)<br>
+<br>
+5.	Form Handling & Validation:<br>
+•	React Hook Form<br>
+•	Zod (Schema Validation)<br>
+<br>
+6.	Icons & UI:<br>
+•	Lucide React (Icon Library)<br>
+•	Radix UI (Headless Components)<br>
 
 
 
