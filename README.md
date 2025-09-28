@@ -1,7 +1,7 @@
 # Welcome to the Task Management System project
-<br><br>
+<br>
 All Technologies Used in This Project:
-
+<br>
 1.	Frontend Technologies:<br>
 •	React 18.3.1 (JavaScript Library) <br>
 •	TypeScript (Type-safe JavaScript)<br>
