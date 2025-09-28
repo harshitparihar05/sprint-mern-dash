@@ -1,6 +1,5 @@
-# Welcome to the Task Management System project
+# Welcome to the Task Management System project<br>
 Author - Harshit Singh Parihar
-
 All Technologies Used in This Project:
 <br>
 1.	Frontend Technologies:<br>
