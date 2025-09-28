@@ -3,7 +3,7 @@
  All Technologies Used in This Project:
 
 1.	Frontend Technologies:
-•	React 18.3.1 (JavaScript Library)
+•	React 18.3.1 (JavaScript Library) <br>
 •	TypeScript (Type-safe JavaScript)
 •	Vite (Build Tool)
 •	Tailwind CSS (Styling Framework)
