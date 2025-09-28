@@ -7,5 +7,5 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
-- Supabase - (Supabase is an open-source platform providing backend-as-a-service (BaaS) features)
+- Supabase 
 
